@@ -27,4 +27,10 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'einfo-terraform'
+    appType: 'webApp'
+    appName: 'einfowebappdev151694'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
